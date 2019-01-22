@@ -5,13 +5,31 @@
 
         <style>
             .json {
+                background-color: #333;
+                color: white;
             }
-            
-            .json .null {}
-            .json .boolean-true {}
-            .json .boolean-false {}
-            .json .number {}
-            .json .string {}
+            .json .null {
+                color: violet;
+            }
+            .json .boolean-true {
+                color: lightgreen;
+            }
+            .json .boolean-false {
+                color: orange;
+            }
+            .json .number {
+                color: skyblue;
+            }
+            .json .string {
+                color: lightgreen;
+                background-color: rgba(0,0,0,0.1);
+                margin: -2px;
+                padding: 2px;
+                border-radius: 2px;
+            }
+            .json .object {
+                padding-left: 16px; 
+            }
         </style>
     </head>
     <body>
@@ -36,22 +54,23 @@
                 <div v-else-if="Array.isArray(obj)">
                     [
                     <div v-for="elem in obj">
-                        <json-obj  :obj="elem"></json-obj>
-                        ,
+                        <json-obj  :obj="elem"></json-obj>,
                     </div>
                     ]
                 </div>
 
                 <div v-else-if="typeof obj === 'object'">
                     {
-                    <table>
-                        <tr v-for="(key, value) of obj">
-                            <td>{{key}}:</td>
-                            <td>
-                                <json-obj :obj="value"></json-obj>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="object">
+                        <table>
+                            <tr v-for="(value, key) of obj">
+                                <td style="vertical-align: top; color: lightgrey">{{key}}:</td>
+                                <td>
+                                    <json-obj :obj="value"></json-obj>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                     }
                 </div>
             </div>

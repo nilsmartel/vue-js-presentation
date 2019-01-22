@@ -8,10 +8,24 @@ new Vue({
     data: {
         jsonData: null,
         inputString: "",
+        exampleData: {
+            persons: [
+                {name: "Hubert", age: 89},
+                {name: "Petterson", age: 23},
+                {name: "Marie", age: 17}
+            ],
+            someBoolean: true,
+            otherBoolean: false,
+            config: {
+                onStartup: null,
+                onSave: "rustfmt"
+            }
+        }
     },
 
     mounted() {
-        this.inputString= "{\"quiz\":{\"sport\":{\"q1\":{\"question\":\"Which one is correct team name in NBA?\",\"options\":[\"New York Bulls\",\"Los Angeles Kings\",\"Golden State Warriros\",\"Huston Rocket\"],\"answer\":\"Huston Rocket\"}},\"maths\":{\"q1\":{\"question\":\"5 + 7 = ?\",\"options\":[\"10\",\"11\",\"12\",\"13\"],\"answer\":\"12\"},\"q2\":{\"question\":\"12 - 8 = ?\",\"options\":[\"1\",\"2\",\"3\",\"4\"],\"answer\":\"4\"}}}}"
+        this.jsonData = this.exampleData
+        console.log(this.exampleData)
     },
 
     watch: {
@@ -19,7 +33,7 @@ new Vue({
             try { 
                 this.jsonData = JSON.parse(value)
             } catch {
-                this.jsonData = null
+                this.jsonData = this.exampleData
             }
         }
     }
