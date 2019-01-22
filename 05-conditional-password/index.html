@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>05 - Conditional Password</title>
+        <script src="../vue.js"></script>
+    </head>
+    <body>
+        <div id="vueForm">
+            <input type="text" v-model="password">
+            <hr/>
+
+            <ul>
+                <li v-if="hasLowercaseLetters(password) == false">
+                    Password must include Lowercase Letters
+                </li>
+                
+                <li v-if="hasUppercaseLetters(password) == false">
+                    Password must include Uppercase Letters
+                </li>
+                
+                <li v-if="hasNumbers(password) == false">
+                    Password must include Numbers
+                </li>
+                
+                <li v-if="hasSpecialCharacters(password) == false">
+                    Password must include special Characters
+                </li>
+
+                <!-- Note: v-if="!something()" is also valid.
+                    I just tried to maximise readability 
+                -->
+            </ul>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>

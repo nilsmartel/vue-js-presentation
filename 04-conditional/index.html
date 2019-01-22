@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>04 - Conditional</title>
+        <script src="../vue.js"></script>
+    </head>
+    <body>
+        <div id="vueForm">
+            <p>Show Text?</p>
+            <input
+                type="checkbox"
+                v-model="showText"
+            >
+            <hr />
+            <p v-if="showText">
+                :q :! esc :help how tf do I exit vim?
+            </p>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>

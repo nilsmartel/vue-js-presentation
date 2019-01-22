@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <title>07 - Lists</title>
+        <script src="../vue.js"></script>
+    </head>
+    <body>
+        <div id="vueForm">
+            <div v-for="(person, index) in persons">
+                <code>#{{index}}:</code>
+                <p>{{person.name}} is {{calculateAge(person.birthyear)}} years old</p>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+    </body>
+</html>

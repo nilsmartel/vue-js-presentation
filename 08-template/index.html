@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>08 - Templates</title>
+        <script src="../vue.js"></script>
+
+        <style>
+            .person-container {
+                border: 1px solid grey;
+                margin: 8px;
+                width: 200px;
+                float: left;
+            }
+
+            .person-container table {
+                padding: 4px;
+                width: 100%;
+            }
+            
+            .person-container table tr {
+                background-color: #DDD;
+            }
+
+            .person-container table tr:nth-child(2) {
+                background-color: #EEE;
+            }
+
+            .person-container td {
+                border: 1px solid lightgrey;
+                padding: 4px;
+                margin: 0px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Begin of Template -->
+        <template id="person-template">
+            <div class="person-container">
+                <img :src="person.img"></img>
+                <br/>
+                <table>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{person.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Profession</td>
+                        <td>{{person.profession}}</td>
+                    </tr>
+                    <tr>
+                        <td>Birthday</td>
+                        <td>{{person.birthday}}</td>
+                    </tr>
+                </table>
+            </div>
+        </template>
+
+        <!-- Begin of actual Vue Form -->
+        <div id="vueForm">
+            
+            <div v-for="person in persons">
+                <person :person="person"></person>
+            </div>
+        </div>
+        <script src="./script.js"></script>
+
+    </body>
+</html>
