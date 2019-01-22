@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <title>09 - JSON Viewer</title>
+        <script src="../vue.js"></script>
+
+        <style>
+            .json {
+            }
+            
+            .json .null {}
+            .json .boolean-true {}
+            .json .boolean-false {}
+            .json .number {}
+            .json .string {}
+        </style>
+    </head>
+    <body>
+        <!-- Begin of Template -->
+        <template id="json-template">
+            <div class="json">
+                <div v-if="obj === null"><p class="null">null</p></div>
+
+                <div v-else-if="typeof obj === 'boolean'">
+                    <p v-if="obj" class="boolean-true">true</p>
+                    <p v-else class="boolean-false">false</p>
+                </div>
+
+                <div v-else-if="typeof obj === 'number'">
+                    <p class="number">{{obj}}</p>
+                </div>
+
+
+                <div v-else-if="typeof obj === 'string'">
+                    <p class="string">"{{obj}}"</p>
+                </div>
+
+
+                <div v-else-if="Array.isArray(obj)">
+                    [
+                    <div v-for="elem in obj">
+                        <json-obj  :obj="elem"></json-obj>
+                        ,
+                    </div>
+                    ]
+                </div>
+
+
+                <div v-else-if="typeof obj === 'object'">
+                    {
+                    <table>
+                        <tr v-for="(key, value) of obj">
+                            <td>{{key}}:</td>
+                            <td>
+                                <json-obj :obj="value"></json-obj>
+                            </td>
+                        </tr>
+                    </table>
+                    }
+                </div>
+            </div>
+        </template>
+
+        <div id="vueForm">
+            <textarea
+                v-model="inputString"
+                ></textarea>
+            <hr/>
+            <json-obj :obj="jsonData"></json-obj>
+        </div>
+        <script src="./script.js"></script>
+
+    </body>
+</html>
